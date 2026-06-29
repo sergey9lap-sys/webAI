@@ -505,10 +505,10 @@ small {
 
 .self {
   background:
-    radial-gradient(circle at 16% 18%, rgba(255, 238, 221, 0.08), transparent 24rem),
-    radial-gradient(circle at 82% 72%, rgba(255, 216, 190, 0.1), transparent 26rem),
-    linear-gradient(135deg, #211240 0%, #3b246f 58%, #4b2da0 100%);
-  color: var(--antique);
+    radial-gradient(circle at 80% 20%, rgba(93, 67, 199, 0.28), transparent 26rem),
+    radial-gradient(circle at 14% 72%, rgba(255, 216, 190, 0.42), transparent 24rem),
+    var(--antique);
+  color: var(--ink);
   overflow: hidden;
 }
 
@@ -531,7 +531,7 @@ small {
   height: clamp(280px, 34vw, 560px);
   right: -10%;
   top: 8%;
-  background: radial-gradient(circle, rgba(255, 238, 221, 0.16), transparent 68%);
+  background: radial-gradient(circle, rgba(93, 67, 199, 0.16), transparent 68%);
   filter: blur(10px);
 }
 
@@ -542,7 +542,7 @@ small {
   height: clamp(220px, 28vw, 440px);
   left: -8%;
   bottom: 4%;
-  background: radial-gradient(circle, rgba(255, 238, 221, 0.18), transparent 70%);
+  background: radial-gradient(circle, rgba(255, 216, 190, 0.32), transparent 70%);
   filter: blur(12px);
 }
 
@@ -552,7 +552,7 @@ small {
 }
 
 .self .section__head p {
-  color: rgba(255, 238, 221, 0.9);
+  color: var(--muted);
 }
 
 .thought-field {
@@ -578,10 +578,10 @@ small {
 
 .thought-lines path {
   fill: none;
-  stroke: rgba(255, 238, 221, 0.58);
+  stroke: rgba(59, 36, 111, 0.42);
   stroke-linecap: round;
   stroke-width: 2;
-  filter: drop-shadow(0 0 14px rgba(255, 238, 221, 0.22));
+  filter: drop-shadow(0 0 14px rgba(59, 36, 111, 0.16));
 }
 
 .thought {
@@ -594,13 +594,13 @@ small {
   border: 1px solid rgba(248, 247, 255, 0.48);
   border-radius: 28px 12px 28px 12px;
   background:
-    linear-gradient(135deg, rgba(248, 247, 255, 0.24), rgba(248, 247, 255, 0.12)),
-    rgba(32, 19, 70, 0.34);
+    linear-gradient(135deg, rgba(248, 247, 255, 0.96), rgba(248, 247, 255, 0.8)),
+    var(--ghost);
   box-shadow:
-    0 22px 56px rgba(37, 27, 75, 0.14),
-    inset 0 1px 0 rgba(248, 247, 255, 0.36);
-  color: var(--antique);
-  text-shadow: 0 1px 10px rgba(32, 19, 70, 0.22);
+    0 22px 56px rgba(59, 36, 111, 0.14),
+    inset 0 1px 0 rgba(248, 247, 255, 0.72);
+  color: var(--deep);
+  text-shadow: none;
   font-weight: 800;
   line-height: 1.45;
   clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px));
@@ -616,7 +616,7 @@ small {
 
 .thought::before {
   inset: 10px;
-  border: 1px solid rgba(248, 247, 255, 0.28);
+  border: 1px solid rgba(59, 36, 111, 0.16);
   border-radius: 20px 8px 20px 8px;
   clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px));
 }
@@ -627,7 +627,7 @@ small {
   width: 34px;
   height: 2px;
   border-radius: 999px;
-  background: rgba(255, 238, 221, 0.54);
+  background: rgba(59, 36, 111, 0.34);
 }
 
 .thought span {
@@ -667,11 +667,11 @@ small {
   max-width: 780px;
   margin: 0 auto;
   padding: 30px 34px;
-  border: 1px solid rgba(255, 238, 221, 0.62);
+  border: 1px solid rgba(59, 36, 111, 0.22);
   border-radius: 24px 10px 24px 10px;
-  background: rgba(255, 238, 221, 0.16);
-  box-shadow: 0 24px 70px rgba(19, 12, 44, 0.28);
-  color: var(--antique);
+  background: rgba(248, 247, 255, 0.82);
+  box-shadow: 0 24px 70px rgba(59, 36, 111, 0.16);
+  color: var(--deep);
   clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 22px 100%, 0 calc(100% - 22px));
   backdrop-filter: blur(18px);
 }
@@ -1011,9 +1011,15 @@ small {
 
 .roadmap {
   background:
-    radial-gradient(circle at 80% 20%, rgba(93, 67, 199, 0.42), transparent 26rem),
-    radial-gradient(circle at 14% 72%, rgba(255, 216, 190, 0.42), transparent 24rem),
-    var(--antique);
+    radial-gradient(circle at 16% 18%, rgba(255, 238, 221, 0.08), transparent 24rem),
+    radial-gradient(circle at 82% 72%, rgba(255, 216, 190, 0.1), transparent 26rem),
+    linear-gradient(135deg, #211240 0%, #3b246f 58%, #4b2da0 100%);
+  color: var(--antique);
+  overflow: hidden;
+}
+
+.roadmap .section__head p {
+  color: rgba(255, 238, 221, 0.9);
 }
 
 .roadmap__layout {
@@ -1044,7 +1050,7 @@ small {
   top: 12%;
   width: 320px;
   height: 320px;
-  background: rgba(248, 247, 255, 0.44);
+  background: rgba(248, 247, 255, 0.18);
   filter: blur(34px);
 }
 
@@ -1053,7 +1059,7 @@ small {
   bottom: 10%;
   width: 240px;
   height: 240px;
-  background: rgba(93, 67, 199, 0.38);
+  background: rgba(255, 216, 190, 0.16);
   filter: blur(28px);
 }
 
@@ -1068,10 +1074,10 @@ small {
 
 .route-line path {
   fill: none;
-  stroke: rgba(59, 36, 111, 0.52);
+  stroke: rgba(255, 238, 221, 0.62);
   stroke-linecap: round;
   stroke-width: 3.2;
-  filter: drop-shadow(0 0 12px rgba(59, 36, 111, 0.22));
+  filter: drop-shadow(0 0 12px rgba(255, 238, 221, 0.22));
 }
 
 .route-stop {
@@ -1085,8 +1091,8 @@ small {
   padding: 20px;
   border: 1px solid rgba(248, 247, 255, 0.76);
   border-radius: 28px 12px 28px 12px;
-  background: rgba(248, 247, 255, 0.84);
-  box-shadow: 0 22px 58px rgba(59, 36, 111, 0.16);
+  background: rgba(248, 247, 255, 0.92);
+  box-shadow: 0 22px 58px rgba(19, 12, 44, 0.26);
   clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px));
 }
 
@@ -1096,7 +1102,7 @@ small {
   aspect-ratio: 1;
   place-items: center;
   border-radius: 50%;
-  background: var(--soft);
+  background: var(--deep);
   color: var(--antique);
   box-shadow: 0 14px 34px rgba(59, 36, 111, 0.28);
   font-weight: 800;
@@ -1105,11 +1111,13 @@ small {
 .route-stop b {
   display: block;
   margin-bottom: 10px;
+  color: var(--deep);
   font-size: 20px;
 }
 
 .route-stop p {
   margin: 0;
+  color: var(--muted);
   font-size: 15px;
 }
 
@@ -1804,7 +1812,7 @@ small {
     bottom: 32px;
     width: 2px;
     border-radius: 999px;
-    background: rgba(248, 247, 255, 0.72);
+    background: rgba(59, 36, 111, 0.36);
     box-shadow: 0 0 16px rgba(59, 36, 111, 0.16);
   }
 

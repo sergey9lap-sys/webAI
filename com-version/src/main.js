@@ -80,7 +80,6 @@ if (!reduceMotion) {
 gsap.utils.toArray(".reveal").forEach((item) => {
   if (item.closest(".hero")) return;
   if (item.closest(".self")) return;
-  if (item.closest(".values")) return;
   gsap.to(item, {
     opacity: 1,
     y: 0,
@@ -146,53 +145,6 @@ gsap.timeline({
     duration: 0.34,
     ease: "power2.out",
   }, 0.78);
-
-gsap.set(".values .section__head", { opacity: 0, y: 28 });
-gsap.set(".shift-card--old", { opacity: 0, x: -28, y: 14 });
-gsap.set(".shift-card--new", { opacity: 0, x: 28, y: 14 });
-gsap.set(".shift-meaning", { opacity: 0, scale: 0.92 });
-gsap.set(".center-note, .values .section-cta", { opacity: 0, y: 30 });
-
-gsap.timeline({
-  scrollTrigger: {
-    trigger: ".values",
-    start: "top 68%",
-    once: true,
-  },
-})
-  .to(".values .section__head", { opacity: 1, y: 0, duration: 0.62 })
-  .to(".shift-card--old", {
-    opacity: 1,
-    x: 0,
-    y: 0,
-    stagger: 0.12,
-    duration: 0.5,
-    ease: "power3.out",
-  }, "-=0.22")
-  .to(".shift-card--old", {
-    opacity: 0.46,
-    scale: 0.96,
-    textDecoration: "line-through",
-    stagger: 0.05,
-    duration: 0.42,
-    ease: "power2.out",
-  }, "+=0.1")
-  .to(".shift-meaning", { opacity: 1, scale: 1, duration: 0.42, ease: "power2.out" }, "-=0.22")
-  .to(".shift-card--new", {
-    opacity: 1,
-    x: 0,
-    y: 0,
-    stagger: 0.1,
-    duration: 0.5,
-    ease: "power3.out",
-  }, "-=0.12")
-  .to(".center-note", {
-    opacity: 1,
-    y: 0,
-    duration: 0.42,
-    ease: "power2.out",
-  }, "-=0.08")
-  .to(".values .section-cta", { opacity: 1, y: 0, duration: 0.36, ease: "power2.out" }, "-=0.12");
 
 gsap.set(".roadmap .section__head", { opacity: 0, y: 30 });
 gsap.set(".route-stop", { opacity: 0, y: 34, scale: 0.94 });
