@@ -54,20 +54,18 @@ if (reduceMotion) {
     })
     .set(titleWords, { yPercent: 0, opacity: 1 });
 } else {
+  const introSteps = gsap.utils.toArray(".intro__step");
+  const introArrows = gsap.utils.toArray(".intro__arrow");
+
   introTl
-    .to(".intro__step", {
-      opacity: 1,
-      y: 0,
-      stagger: 0.74,
-      duration: 0.52,
-    })
-    .to(".intro__arrow", {
-      opacity: 1,
-      y: 0,
-      stagger: 0.74,
-      duration: 0.34,
-    }, 0.46)
-    .to(".intro", { opacity: 0, duration: 0.58 }, "+=0.7");
+    .to(introSteps[0], { opacity: 1, y: 0, duration: 0.62 })
+    .to(introArrows[0], { opacity: 1, y: 0, duration: 0.28 }, "+=0.95")
+    .to(introSteps[1], { opacity: 1, y: 0, duration: 0.62 }, "+=0.08")
+    .to(introArrows[1], { opacity: 1, y: 0, duration: 0.28 }, "+=1.05")
+    .to(introSteps[2], { opacity: 1, y: 0, duration: 0.62 }, "+=0.08")
+    .to(introArrows[2], { opacity: 1, y: 0, duration: 0.28 }, "+=1.12")
+    .to(introSteps[3], { opacity: 1, y: 0, duration: 0.68 }, "+=0.08")
+    .to(".intro", { opacity: 0, duration: 0.96 }, "+=1.75");
 }
 
 introTl
@@ -133,33 +131,33 @@ thoughtPaths.forEach((path) => {
 gsap.timeline({
   scrollTrigger: {
     trigger: ".self",
-    start: "top 72%",
+    start: "top 84%",
     once: true,
   },
 })
-  .to(".self .section__head", { opacity: 1, y: 0, duration: 0.6 })
+  .to(".self .section__head", { opacity: 1, y: 0, duration: 0.48 })
   .to(".thought", {
     opacity: 1,
     y: 0,
     scale: 1,
-    stagger: 0.13,
-    duration: 0.64,
+    stagger: 0.08,
+    duration: 0.48,
     ease: "power3.out",
-  }, "-=0.18");
+  }, "-=0.22");
 
 gsap.timeline({
   scrollTrigger: {
     trigger: ".thought-field",
-    start: "top 68%",
-    end: "bottom 46%",
-    scrub: 0.8,
+    start: "top 82%",
+    end: "top 34%",
+    scrub: 0.35,
   },
 })
   .to(thoughtPaths, {
     strokeDashoffset: 0,
     opacity: 1,
-    stagger: 0.12,
-    duration: 1,
+    stagger: 0.05,
+    duration: 0.42,
     ease: "none",
   })
   .to(".insight", {
@@ -281,23 +279,23 @@ routePaths.forEach((path) => {
 gsap.timeline({
   scrollTrigger: {
     trigger: ".roadmap",
-    start: "top 72%",
+    start: "top 88%",
     once: true,
   },
 })
-  .to(".roadmap .section__head", { opacity: 1, y: 0, duration: 0.58 })
-  .to(".route-stop--one", { opacity: 1, y: 0, scale: 1.04, duration: 0.36, ease: "back.out(1.7)" }, "-=0.06")
-  .to(".route-stop--one", { scale: 1, duration: 0.24 })
-  .to(routePaths[0], { strokeDashoffset: 0, opacity: 1, duration: 0.48, ease: "none" }, "-=0.02")
-  .to(".route-stop--two", { opacity: 1, y: 0, scale: 1.04, duration: 0.36, ease: "back.out(1.7)" }, "-=0.1")
-  .to(".route-stop--two", { scale: 1, duration: 0.24 })
-  .to(routePaths[1], { strokeDashoffset: 0, opacity: 1, duration: 0.48, ease: "none" }, "-=0.02")
-  .to(".route-stop--three", { opacity: 1, y: 0, scale: 1.04, duration: 0.36, ease: "back.out(1.7)" }, "-=0.1")
-  .to(".route-stop--three", { scale: 1, duration: 0.24 })
-  .to(routePaths[2], { strokeDashoffset: 0, opacity: 1, duration: 0.48, ease: "none" }, "-=0.02")
-  .to(".route-stop--four", { opacity: 1, y: 0, scale: 1.04, duration: 0.36, ease: "back.out(1.7)" }, "-=0.1")
-  .to(".route-stop--four", { scale: 1, duration: 0.24 })
-  .to(".roadmap .section-cta", { opacity: 1, y: 0, duration: 0.36, ease: "power2.out" }, "-=0.08");
+  .to(".roadmap .section__head", { opacity: 1, y: 0, duration: 0.42 })
+  .to(".route-stop--one", { opacity: 1, y: 0, scale: 1.03, duration: 0.24, ease: "back.out(1.7)" }, "-=0.1")
+  .to(".route-stop--one", { scale: 1, duration: 0.14 })
+  .to(routePaths[0], { strokeDashoffset: 0, opacity: 1, duration: 0.26, ease: "none" }, "-=0.04")
+  .to(".route-stop--two", { opacity: 1, y: 0, scale: 1.03, duration: 0.24, ease: "back.out(1.7)" }, "-=0.18")
+  .to(".route-stop--two", { scale: 1, duration: 0.14 })
+  .to(routePaths[1], { strokeDashoffset: 0, opacity: 1, duration: 0.26, ease: "none" }, "-=0.04")
+  .to(".route-stop--three", { opacity: 1, y: 0, scale: 1.03, duration: 0.24, ease: "back.out(1.7)" }, "-=0.18")
+  .to(".route-stop--three", { scale: 1, duration: 0.14 })
+  .to(routePaths[2], { strokeDashoffset: 0, opacity: 1, duration: 0.26, ease: "none" }, "-=0.04")
+  .to(".route-stop--four", { opacity: 1, y: 0, scale: 1.03, duration: 0.24, ease: "back.out(1.7)" }, "-=0.18")
+  .to(".route-stop--four", { scale: 1, duration: 0.14 })
+  .to(".roadmap .section-cta", { opacity: 1, y: 0, duration: 0.24, ease: "power2.out" }, "-=0.08");
 
 gsap.set(".register__scene h2, .register__scene > p, .gc-widget, .register__benefits span, .register__scene small", {
   opacity: 0,
@@ -415,11 +413,11 @@ const initCareMessages = () => {
     gsap.fromTo(".care__phone-ring", {
       opacity: 0.58,
       scale: 0.92,
-      boxShadow: "0 0 0 0 rgba(255, 238, 221, 0.32), 0 0 44px rgba(184, 184, 255, 0.18)",
+      boxShadow: "0 0 0 0 rgba(255, 238, 221, 0.32), 0 0 44px rgba(93, 67, 199, 0.18)",
     }, {
       opacity: 0,
       scale: 1.18,
-      boxShadow: "0 0 0 18px rgba(255, 238, 221, 0), 0 0 64px rgba(184, 184, 255, 0)",
+      boxShadow: "0 0 0 18px rgba(255, 238, 221, 0), 0 0 64px rgba(93, 67, 199, 0)",
       duration: 0.56,
       ease: "power2.out",
     });
