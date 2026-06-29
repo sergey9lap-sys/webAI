@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./src/styles.css?v=20260630-mobile-photo-widget" />
+    <link rel="stylesheet" href="./src/styles.css?v=20260630-cookie-consent" />
   </head>
   <body>
     <div class="intro" aria-hidden="true">
@@ -287,6 +287,16 @@
       </div>
     </footer>
 
-    <script type="module" src="./src/main.js?v=20260630-mobile-photo-widget"></script>
+    <div class="cookie-consent" data-cookie-consent role="dialog" aria-live="polite" aria-label="Уведомление об использовании cookies" hidden>
+      <button class="cookie-consent__close" type="button" data-cookie-accept aria-label="Закрыть уведомление">×</button>
+      <p>
+        Продолжая использование сайта, я выражаю согласие на обработку моих персональных данных при помощи сервиса Яндекс.Метрика, подтверждаю, что ознакомлен с
+        <a href="https://agkedu.ru/personaldata" target="_blank" rel="noreferrer">политикой в отношении обработки персональных данных</a>
+        и уведомлен об использовании файлов cookies.
+      </p>
+      <button class="cookie-consent__button" type="button" data-cookie-accept>Согласен</button>
+    </div>
+
+    <script type="module" src="./src/main.js?v=20260630-cookie-consent"></script>
   </body>
 </html>

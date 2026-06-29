@@ -430,3 +430,22 @@ const initCareMessages = () => {
 };
 
 initCareMessages();
+
+const initCookieConsent = () => {
+  const consent = document.querySelector("[data-cookie-consent]");
+  if (!consent) return;
+
+  const storageKey = "agk-cookie-consent";
+  if (localStorage.getItem(storageKey) === "accepted") return;
+
+  consent.hidden = false;
+
+  consent.querySelectorAll("[data-cookie-accept]").forEach((button) => {
+    button.addEventListener("click", () => {
+      localStorage.setItem(storageKey, "accepted");
+      consent.hidden = true;
+    });
+  });
+};
+
+initCookieConsent();
