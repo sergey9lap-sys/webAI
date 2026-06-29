@@ -4,8 +4,6 @@ import Lenis from "lenis";
 
 gsap.registerPlugin(ScrollTrigger);
 
-document.body.classList.add("is-loading");
-
 const lenis = new Lenis({
   duration: 1.1,
   smoothWheel: true,
@@ -31,44 +29,27 @@ gsap.set(".hero__ambient span, .hero__ambient i, .hero__visual, .hero__copy .eye
   opacity: 0,
   y: 18,
 });
-gsap.set(".intro__step, .intro__arrow", { opacity: 0, y: 18 });
 gsap.set(".depth", { opacity: 0, scale: 0.94 });
 gsap.set(".portrait-editorial img", { opacity: 0, y: 28, scale: 0.98 });
 
-const introTl = gsap.timeline({
+const heroTl = gsap.timeline({
   defaults: { ease: "power3.out" },
   onComplete: () => {
-    document.body.classList.remove("is-loading");
-    gsap.set(".intro", { display: "none" });
     title.textContent = titleText;
   },
 });
 
 if (reduceMotion) {
-  introTl
-    .set(".intro", { opacity: 0 })
+  heroTl
     .set(".hero__ambient span, .hero__ambient i, .hero__visual, .hero__copy .eyebrow, .hero__copy > p, .event-bar span, .hero .button, .depth, .portrait-editorial img", {
       opacity: 1,
       y: 0,
       scale: 1,
     })
     .set(titleWords, { yPercent: 0, opacity: 1 });
-} else {
-  const introSteps = gsap.utils.toArray(".intro__step");
-  const introArrows = gsap.utils.toArray(".intro__arrow");
-
-  introTl
-    .to(introSteps[0], { opacity: 1, y: 0, duration: 0.46 })
-    .to(introArrows[0], { opacity: 1, y: 0, duration: 0.2 }, "+=0.36")
-    .to(introSteps[1], { opacity: 1, y: 0, duration: 0.46 }, "+=0.04")
-    .to(introArrows[1], { opacity: 1, y: 0, duration: 0.2 }, "+=0.42")
-    .to(introSteps[2], { opacity: 1, y: 0, duration: 0.46 }, "+=0.04")
-    .to(introArrows[2], { opacity: 1, y: 0, duration: 0.2 }, "+=0.46")
-    .to(introSteps[3], { opacity: 1, y: 0, duration: 0.52 }, "+=0.04")
-    .to(".intro", { opacity: 0, duration: 0.56 }, "+=0.78");
 }
 
-introTl
+heroTl
   .to(".hero__ambient span", { opacity: 1, y: 0, stagger: 0.08, duration: 0.62 })
   .to(".hero__ambient i", { opacity: 1, y: 0, stagger: 0.05, duration: 0.48 }, "-=0.36")
   .to(".depth", { opacity: 1, scale: 1, stagger: 0.08, duration: 0.7 }, "-=0.26")
@@ -100,7 +81,6 @@ gsap.utils.toArray(".reveal").forEach((item) => {
   if (item.closest(".hero")) return;
   if (item.closest(".self")) return;
   if (item.closest(".values")) return;
-  if (item.closest(".expert")) return;
   gsap.to(item, {
     opacity: 1,
     y: 0,
@@ -213,54 +193,6 @@ gsap.timeline({
     ease: "power2.out",
   }, "-=0.08")
   .to(".values .section-cta", { opacity: 1, y: 0, duration: 0.36, ease: "power2.out" }, "-=0.12");
-
-gsap.set(".expert .section__head", { opacity: 0, y: 28 });
-gsap.set(".star-card", { opacity: 0, scale: 0.82, filter: "brightness(1)" });
-gsap.set(".sky-particle", { opacity: 0, y: 10 });
-
-const constellationPaths = gsap.utils.toArray(".constellation__lines path");
-constellationPaths.forEach((path) => {
-  const length = path.getTotalLength();
-  gsap.set(path, {
-    strokeDasharray: length,
-    strokeDashoffset: length,
-    opacity: 0,
-  });
-});
-
-const constellationTl = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".expert",
-    start: "top 70%",
-    once: true,
-  },
-});
-
-constellationTl
-  .to(".expert .section__head", { opacity: 1, y: 0, duration: 0.58 })
-  .to(".sky-particle", { opacity: 1, y: 0, stagger: 0.08, duration: 0.42 }, "-=0.24")
-  .to(".star-card--meissa", { opacity: 1, scale: 1, duration: 0.34, ease: "back.out(1.8)" }, "-=0.08")
-  .to(".star-card--meissa", { filter: "brightness(1.55)", duration: 0.12, yoyo: true, repeat: 1 }, "-=0.04")
-  .to(".star-card--betelgeuse", { opacity: 1, scale: 1, duration: 0.34, ease: "back.out(1.8)" }, "-=0.24")
-  .to(".star-card--betelgeuse", { filter: "brightness(1.55)", duration: 0.12, yoyo: true, repeat: 1 }, "-=0.02")
-  .to(constellationPaths[0], { strokeDashoffset: 0, opacity: 1, duration: 0.34, ease: "none" }, "-=0.02")
-  .to(".star-card--bellatrix", { opacity: 1, scale: 1, duration: 0.34, ease: "back.out(1.8)" }, "-=0.18")
-  .to(".star-card--bellatrix", { filter: "brightness(1.5)", duration: 0.12, yoyo: true, repeat: 1 }, "-=0.02")
-  .to(constellationPaths[1], { strokeDashoffset: 0, opacity: 1, duration: 0.34, ease: "none" }, "-=0.02")
-  .to(".star-card--alnitak", { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.8)" }, "-=0.16")
-  .to(".star-card--alnitak", { filter: "brightness(1.48)", duration: 0.1, yoyo: true, repeat: 1 }, "-=0.02")
-  .to(constellationPaths[2], { strokeDashoffset: 0, opacity: 1, duration: 0.34, ease: "none" }, "-=0.02")
-  .to(".star-card--mintaka", { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.8)" }, "-=0.16")
-  .to(".star-card--mintaka", { filter: "brightness(1.48)", duration: 0.1, yoyo: true, repeat: 1 }, "-=0.02")
-  .to(constellationPaths[3], { strokeDashoffset: 0, opacity: 1, duration: 0.34, ease: "none" }, "-=0.02")
-  .to(constellationPaths[4], { strokeDashoffset: 0, opacity: 1, duration: 0.34, ease: "none" }, "-=0.02")
-  .to(".star-card--saiph", { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.8)" }, "-=0.16")
-  .to(".star-card--saiph", { filter: "brightness(1.45)", duration: 0.1, yoyo: true, repeat: 1 }, "-=0.02")
-  .to(constellationPaths[5], { strokeDashoffset: 0, opacity: 1, duration: 0.34, ease: "none" }, "-=0.02")
-  .to(".star-card--rigel", { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.8)" }, "-=0.16")
-  .to(".star-card--rigel", { filter: "brightness(1.45)", duration: 0.1, yoyo: true, repeat: 1 }, "-=0.02")
-  .to(constellationPaths[6], { strokeDashoffset: 0, opacity: 1, duration: 0.34, ease: "none" }, "-=0.02")
-  .to(constellationPaths[7], { strokeDashoffset: 0, opacity: 1, duration: 0.34, ease: "none" }, "-=0.08");
 
 gsap.set(".roadmap .section__head", { opacity: 0, y: 30 });
 gsap.set(".route-stop", { opacity: 0, y: 34, scale: 0.94 });

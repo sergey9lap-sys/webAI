@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+
+# Local agent/config files
+.codex/
+.agents/
+
+# Build output
+dist/
+build/
+.next/
+
+# Environment files
+.env
+.env.*
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+
+# Temporary files
+.cache/
+tmp/
+temp/
