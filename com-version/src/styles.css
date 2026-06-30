@@ -863,6 +863,12 @@ small {
   margin-top: -34px;
 }
 
+.section-cta--route .button {
+  background: var(--antique);
+  color: var(--deep);
+  box-shadow: 0 24px 60px rgba(19, 12, 44, 0.28);
+}
+
 .expert {
   overflow: hidden;
   color: var(--antique);
