@@ -7,6 +7,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "index.html"),
         thanks: resolve(__dirname, "thanks/index.html"),
+        spasibo: resolve(__dirname, "spasibo/index.html"),
       },
     },
   },

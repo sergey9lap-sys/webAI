@@ -11,6 +11,14 @@
       "destination": "/thanks/index.html"
     },
     {
+      "source": "/spasibo",
+      "destination": "/spasibo/index.html"
+    },
+    {
+      "source": "/spasibo/",
+      "destination": "/spasibo/index.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
