@@ -14,68 +14,8 @@ lenis.on("scroll", ScrollTrigger.update);
 gsap.ticker.add((time) => lenis.raf(time * 1000));
 gsap.ticker.lagSmoothing(0);
 
-const title = document.querySelector(".split-title");
-const titleText = title.textContent.trim();
-title.innerHTML = titleText
-  .split(" ")
-  .map((word) => `<span class="word"><span>${word}</span></span>`)
-  .join(" ");
-const titleWords = gsap.utils.toArray(".split-title .word span");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const isSmallScreen = window.matchMedia("(max-width: 680px)").matches;
-
-gsap.set(titleWords, { yPercent: 105, opacity: 0 });
-gsap.set(".hero__ambient span, .hero__ambient i, .hero__visual, .hero__copy .eyebrow, .hero__copy > p, .event-bar span, .hero .button", {
-  opacity: 0,
-  y: 18,
-});
-gsap.set(".depth", { opacity: 0, scale: 0.94 });
-gsap.set(".portrait-editorial img", { opacity: 0, y: 28, scale: 0.98 });
-
-const heroTl = gsap.timeline({
-  defaults: { ease: "power3.out" },
-  onComplete: () => {
-    title.textContent = titleText;
-  },
-});
-
-if (reduceMotion) {
-  heroTl
-    .set(".hero__ambient span, .hero__ambient i, .hero__visual, .hero__copy .eyebrow, .hero__copy > p, .event-bar span, .hero .button, .depth, .portrait-editorial img", {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-    })
-    .set(titleWords, { yPercent: 0, opacity: 1 });
-}
-
-heroTl
-  .to(".hero__ambient span", { opacity: 1, y: 0, stagger: 0.08, duration: 0.62 })
-  .to(".hero__ambient i", { opacity: 1, y: 0, stagger: 0.05, duration: 0.48 }, "-=0.36")
-  .to(".depth", { opacity: 1, scale: 1, stagger: 0.08, duration: 0.7 }, "-=0.26")
-  .to(".hero__visual", { opacity: 1, y: 0, duration: 0.1 }, "-=0.64")
-  .to(".portrait-editorial img", { opacity: 1, y: 0, scale: 1, duration: 0.72 }, "-=0.56")
-  .to(titleWords, {
-    yPercent: 0,
-    opacity: 1,
-    stagger: 0.035,
-    duration: 0.64,
-  }, "-=0.24")
-  .to(".hero__copy .eyebrow, .hero__copy > p", { opacity: 1, y: 0, stagger: 0.12, duration: 0.5 }, "-=0.1")
-  .to(".hero .button", { opacity: 1, y: 0, duration: 0.52 }, "-=0.08")
-  .to(".event-bar span", { opacity: 1, y: 0, stagger: 0.1, duration: 0.48 }, "-=0.08");
-
-if (!reduceMotion) {
-  window.addEventListener("mousemove", (event) => {
-    const x = event.clientX / window.innerWidth - 0.5;
-    const y = event.clientY / window.innerHeight - 0.5;
-
-    gsap.to(".hero__ambient span", { x: x * 18, y: y * 14, duration: 1.1, ease: "power2.out" });
-    gsap.to(".depth--one", { x: x * -14, y: y * -10, duration: 1, ease: "power2.out" });
-    gsap.to(".depth--two", { x: x * 10, y: y * 8, duration: 1, ease: "power2.out" });
-    gsap.to(".portrait-editorial img", { x: x * 8, y: y * 5, duration: 1.2, ease: "power2.out" });
-  });
-}
 
 gsap.utils.toArray(".reveal").forEach((item) => {
   if (item.closest(".hero")) return;
