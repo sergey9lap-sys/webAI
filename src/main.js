@@ -4,8 +4,6 @@ import Lenis from "lenis";
 
 gsap.registerPlugin(ScrollTrigger);
 
-document.body.classList.add("is-loading");
-
 const lenis = new Lenis({
   duration: 1.1,
   smoothWheel: true,
@@ -18,33 +16,6 @@ gsap.ticker.lagSmoothing(0);
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const isSmallScreen = window.matchMedia("(max-width: 680px)").matches;
-
-gsap.set(".intro__step, .intro__arrow", { opacity: 0, y: 18 });
-
-const introTl = gsap.timeline({
-  defaults: { ease: "power3.out" },
-  onComplete: () => {
-    document.body.classList.remove("is-loading");
-    gsap.set(".intro", { display: "none" });
-  },
-});
-
-if (reduceMotion) {
-  introTl.set(".intro", { opacity: 0 });
-} else {
-  const introSteps = gsap.utils.toArray(".intro__step");
-  const introArrows = gsap.utils.toArray(".intro__arrow");
-
-  introTl
-    .to(introSteps[0], { opacity: 1, y: 0, duration: 0.46 })
-    .to(introArrows[0], { opacity: 1, y: 0, duration: 0.2 }, "+=0.36")
-    .to(introSteps[1], { opacity: 1, y: 0, duration: 0.46 }, "+=0.04")
-    .to(introArrows[1], { opacity: 1, y: 0, duration: 0.2 }, "+=0.42")
-    .to(introSteps[2], { opacity: 1, y: 0, duration: 0.46 }, "+=0.04")
-    .to(introArrows[2], { opacity: 1, y: 0, duration: 0.2 }, "+=0.46")
-    .to(introSteps[3], { opacity: 1, y: 0, duration: 0.52 }, "+=0.04")
-    .to(".intro", { opacity: 0, duration: 0.56 }, "+=0.78");
-}
 
 gsap.utils.toArray(".reveal").forEach((item) => {
   if (item.closest(".hero")) return;
