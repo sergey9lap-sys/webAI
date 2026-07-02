@@ -116,6 +116,86 @@ const initCountdown = () => {
 
 initCountdown();
 
+const initTestimonialSlider = () => {
+  const slider = document.querySelector("[data-testimonial-slider]");
+  if (!slider) return;
+
+  const track = slider.querySelector(".testimonial-slider__track");
+  const slides = Array.from(slider.querySelectorAll(".testimonial-slide"));
+  const prevButton = slider.querySelector("[data-testimonial-prev]");
+  const nextButton = slider.querySelector("[data-testimonial-next]");
+  const dotsNode = slider.querySelector("[data-testimonial-dots]");
+  if (!track || !slides.length || !dotsNode) return;
+
+  let current = 0;
+  let pointerStart = null;
+  const desktopQuery = window.matchMedia("(min-width: 821px)");
+  const getSlidesPerView = () => (desktopQuery.matches ? 2 : 1);
+  const getPageCount = () => Math.ceil(slides.length / getSlidesPerView());
+
+  let dots = [];
+
+  const buildDots = () => {
+    dotsNode.innerHTML = "";
+    dots = Array.from({ length: getPageCount() }, (_, index) => {
+      const dot = document.createElement("button");
+      dot.className = "testimonial-slider__dot";
+      dot.type = "button";
+      dot.setAttribute("aria-label", `Показать отзывы ${index + 1}`);
+      dot.addEventListener("click", () => goTo(index));
+      dotsNode.append(dot);
+      return dot;
+    });
+  };
+
+  const render = () => {
+    const pageCount = getPageCount();
+    current = Math.min(current, pageCount - 1);
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((dot, index) => {
+      dot.classList.toggle("is-active", index === current);
+      dot.setAttribute("aria-current", index === current ? "true" : "false");
+    });
+  };
+
+  const goTo = (index) => {
+    const pageCount = getPageCount();
+    current = (index + pageCount) % pageCount;
+    render();
+  };
+
+  prevButton?.addEventListener("click", () => goTo(current - 1));
+  nextButton?.addEventListener("click", () => goTo(current + 1));
+
+  slider.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") goTo(current - 1);
+    if (event.key === "ArrowRight") goTo(current + 1);
+  });
+
+  slider.addEventListener("pointerdown", (event) => {
+    pointerStart = event.clientX;
+  });
+
+  slider.addEventListener("pointerup", (event) => {
+    if (pointerStart === null) return;
+    const delta = event.clientX - pointerStart;
+    pointerStart = null;
+    if (Math.abs(delta) < 42) return;
+    goTo(delta > 0 ? current - 1 : current + 1);
+  });
+
+  desktopQuery.addEventListener("change", () => {
+    buildDots();
+    render();
+  });
+
+  slider.tabIndex = 0;
+  buildDots();
+  render();
+};
+
+initTestimonialSlider();
+
 const initCookieConsent = () => {
   const consent = document.querySelector("[data-cookie-consent]");
   if (!consent) return;

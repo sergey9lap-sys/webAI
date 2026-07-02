@@ -238,6 +238,20 @@ p {
   max-width: 800px;
 }
 
+.hero__logo {
+  position: absolute;
+  left: clamp(20px, 5vw, 72px);
+  top: clamp(18px, 3vw, 34px);
+  z-index: 3;
+  width: clamp(74px, 5.2vw, 118px);
+  max-width: 118px;
+  height: auto;
+  margin: 0;
+  object-fit: contain;
+  opacity: 0.86;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.22));
+}
+
 .hero .eyebrow {
   padding: 12px 22px;
   border-color: rgba(233, 200, 106, 0.86);
@@ -344,9 +358,11 @@ p {
   position: relative;
   z-index: 1;
   width: 100%;
+  aspect-ratio: 4 / 5;
   max-height: min(74svh, 680px);
   border-radius: 18px;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center top;
   filter: saturate(0.95) contrast(1.03);
 }
 
@@ -882,35 +898,115 @@ p {
   background: var(--gold);
 }
 
-.testimonial-placeholder {
+.testimonial-slider {
   position: relative;
-  width: min(100%, 960px);
+  width: min(100%, 980px);
   margin: 0 auto;
-  padding: clamp(32px, 5vw, 58px);
+  padding: clamp(16px, 2vw, 22px);
   border: 1px solid rgba(141, 104, 21, 0.22);
   border-radius: 22px;
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.62), rgba(255, 250, 240, 0.3)),
     rgba(255, 250, 240, 0.42);
   box-shadow: var(--light-shadow);
-  text-align: center;
+  overflow: hidden;
 }
 
-.testimonial-placeholder::before {
+.testimonial-slider::before {
   content: "";
   position: absolute;
-  left: 34px;
-  top: 32px;
+  left: 24px;
+  top: 22px;
   width: 42px;
   height: 1px;
   background: var(--gold-bright);
 }
 
-.testimonial-placeholder p {
-  margin-bottom: 0;
-  color: var(--ink-soft);
-  font-size: clamp(18px, 1.4vw, 22px);
-  font-weight: 700;
+.testimonial-slider__viewport {
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.testimonial-slider__track {
+  display: flex;
+  align-items: stretch;
+  transition: transform 360ms ease;
+  will-change: transform;
+}
+
+.testimonial-slide {
+  flex: 0 0 50%;
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  margin: 0;
+  padding: clamp(16px, 2.4vw, 26px);
+}
+
+.testimonial-slide img {
+  width: auto;
+  max-width: 100%;
+  max-height: min(44vh, 360px);
+  border: 1px solid rgba(141, 104, 21, 0.18);
+  border-radius: 14px;
+  box-shadow: 0 18px 46px rgba(5, 39, 90, 0.16);
+  object-fit: contain;
+  background: rgba(255, 250, 240, 0.72);
+}
+
+.testimonial-slider__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 4px 0 2px;
+}
+
+.testimonial-slider__arrow {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid rgba(141, 104, 21, 0.26);
+  border-radius: 50%;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.62), rgba(255, 250, 240, 0.34)),
+    rgba(255, 250, 240, 0.4);
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 28px;
+  line-height: 1;
+  transition: border-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.testimonial-slider__arrow:hover {
+  border-color: rgba(141, 104, 21, 0.46);
+  color: #8d6815;
+  transform: translateY(-1px);
+}
+
+.testimonial-slider__dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  justify-content: center;
+  max-width: 420px;
+}
+
+.testimonial-slider__dot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(5, 39, 90, 0.24);
+  cursor: pointer;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.testimonial-slider__dot.is-active {
+  background: var(--gold);
+  transform: scale(1.45);
 }
 
 .footer {
@@ -1235,6 +1331,12 @@ p {
     padding-top: 54px;
   }
 
+  .hero__logo {
+    left: 18px;
+    top: 18px;
+    width: 78px;
+  }
+
   h1,
   .hero h1 {
     font-size: clamp(36px, 10vw, 50px);
@@ -1292,6 +1394,30 @@ p {
     right: 12px;
     bottom: 12px;
     width: calc(100% - 24px);
+  }
+
+  .testimonial-slider {
+    padding: 12px;
+  }
+
+  .testimonial-slide {
+    flex-basis: 100%;
+  }
+
+  .testimonial-slide {
+    padding: 12px;
+  }
+
+  .testimonial-slide img {
+    max-height: 420px;
+  }
+
+  .testimonial-slider__controls {
+    gap: 12px;
+  }
+
+  .testimonial-slider__dots {
+    max-width: 210px;
   }
 }
 
