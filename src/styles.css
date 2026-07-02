@@ -240,12 +240,12 @@ p {
 
 .hero__logo {
   position: absolute;
-  left: clamp(414px, 23.2vw, 474px);
-  top: clamp(96px, 6.2vw, 118px);
+  left: clamp(20px, 5vw, 72px);
+  top: clamp(28px, 5vw, 70px);
   z-index: 3;
   display: block;
-  width: clamp(278px, 18.5vw, 360px);
-  height: clamp(54px, 3.7vw, 70px);
+  width: clamp(260px, 18vw, 340px);
+  height: clamp(50px, 3.5vw, 66px);
   padding: 0;
   border: 0;
   border-radius: 0;
@@ -282,6 +282,10 @@ p {
 .hero h1 {
   max-width: 800px;
   font-size: clamp(42px, 4.35vw, 68px);
+}
+
+.split-title span {
+  display: block;
 }
 
 .hero__kicker {
@@ -1488,8 +1492,8 @@ p {
   .hero__logo {
     left: 18px;
     top: 18px;
-    width: min(300px, calc(100vw - 36px));
-    height: 62px;
+    width: min(276px, calc(100vw - 36px));
+    height: 56px;
     padding: 0;
   }
 

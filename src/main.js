@@ -6,6 +6,34 @@ gsap.registerPlugin(ScrollTrigger);
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+const protectShortWords = () => {
+  const roots = document.querySelectorAll(
+    ".hero__copy, .competence-table, .lecture-timeline, .audience, .register__copy, .author__text, .testimonials, .footer, .thanks-card",
+  );
+  const shortWords = "(а|и|в|во|на|с|со|к|ко|о|об|от|до|за|по|из|у|для|не|но|что|как)";
+  const shortWordPattern = new RegExp(`(^|[\\s([{«"„])(${shortWords})\\s+`, "giu");
+
+  roots.forEach((root) => {
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        if (!node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        const parent = node.parentElement;
+        if (!parent || parent.closest("script, style, noscript, .gc-widget")) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      },
+    });
+
+    const textNodes = [];
+    while (walker.nextNode()) textNodes.push(walker.currentNode);
+
+    textNodes.forEach((node) => {
+      node.nodeValue = node.nodeValue.replace(shortWordPattern, "$1$2\u00a0");
+    });
+  });
+};
+
+protectShortWords();
+
 if (!reduceMotion) {
   const lenis = new Lenis({
     duration: 1,
