@@ -243,24 +243,30 @@ p {
   left: clamp(20px, 5vw, 72px);
   top: clamp(18px, 3vw, 34px);
   z-index: 3;
+  display: block;
   width: clamp(104px, 7vw, 150px);
   max-width: 150px;
-  height: auto;
+  aspect-ratio: 5513 / 3594;
   padding: 10px 12px;
   border: 1px solid rgba(233, 200, 106, 0.28);
   border-radius: 16px;
-  background: rgba(246, 241, 231, 0.09);
+  background: rgba(246, 241, 231, 0.08);
   margin: 0;
-  object-fit: contain;
   opacity: 1;
   box-shadow:
     0 16px 34px rgba(0, 0, 0, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.12);
-  filter:
-    drop-shadow(0 10px 20px rgba(0, 0, 0, 0.22))
-    brightness(1.22)
-    contrast(1.14);
   backdrop-filter: blur(14px);
+}
+
+.hero__logo::before {
+  content: "";
+  position: absolute;
+  inset: 10px 12px;
+  background: #fff;
+  -webkit-mask: url("/Без фона-2.png") center / contain no-repeat;
+  mask: url("/Без фона-2.png") center / contain no-repeat;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.22));
 }
 
 .hero .eyebrow {
