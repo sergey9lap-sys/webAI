@@ -130,7 +130,7 @@ const initTestimonialSlider = () => {
   let current = 0;
   let pointerStart = null;
   const desktopQuery = window.matchMedia("(min-width: 821px)");
-  const getSlidesPerView = () => (desktopQuery.matches ? 2 : 1);
+  const getSlidesPerView = () => 1;
   const getPageCount = () => Math.ceil(slides.length / getSlidesPerView());
 
   let dots = [];
@@ -141,7 +141,7 @@ const initTestimonialSlider = () => {
       const dot = document.createElement("button");
       dot.className = "testimonial-slider__dot";
       dot.type = "button";
-      dot.setAttribute("aria-label", `Показать отзывы ${index + 1}`);
+      dot.setAttribute("aria-label", `Показать отзыв ${index + 1}`);
       dot.addEventListener("click", () => goTo(index));
       dotsNode.append(dot);
       return dot;
