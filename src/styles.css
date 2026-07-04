@@ -238,6 +238,12 @@ p {
   max-width: 800px;
 }
 
+.hero__copy > .button {
+  display: flex;
+  width: fit-content;
+  margin-bottom: 28px;
+}
+
 .hero__logo {
   position: absolute;
   left: clamp(20px, 5vw, 72px);
@@ -1534,6 +1540,11 @@ p {
     min-height: 58px;
     min-width: 0;
     padding-inline: 20px;
+  }
+
+  .hero__copy > .button {
+    width: 100%;
+    margin-bottom: 20px;
   }
 
   .hero-portrait {
