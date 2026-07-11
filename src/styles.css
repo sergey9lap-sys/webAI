@@ -557,20 +557,19 @@ p {
   width: min(100%, 1240px);
   margin: 0 auto;
   overflow: hidden;
-  border: 1px solid rgba(141, 104, 21, 0.2);
+  border: 1px solid rgba(233, 200, 106, 0.34);
   border-radius: 24px;
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.66), rgba(255, 255, 255, 0.28)),
-    rgba(255, 250, 240, 0.52);
-  box-shadow: var(--light-shadow);
-  backdrop-filter: blur(18px);
+    radial-gradient(circle at 92% 8%, rgba(233, 200, 106, 0.16), transparent 24rem),
+    linear-gradient(135deg, rgba(5, 39, 90, 0.98), rgba(6, 59, 122, 0.98));
+  box-shadow: 0 22px 48px rgba(5, 39, 90, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .table-row {
   display: grid;
   grid-template-columns: 0.9fr 1.45fr 1.45fr;
   min-height: 148px;
-  border-top: 1px solid rgba(5, 39, 90, 0.08);
+  border-top: 1px solid rgba(233, 200, 106, 0.22);
   transition: background 180ms ease, border-color 180ms ease;
 }
 
@@ -579,25 +578,25 @@ p {
 }
 
 .table-row:not(.table-row--head):hover {
-  background: rgba(255, 255, 255, 0.44);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .table-row > div {
   display: flex;
   align-items: center;
   padding: clamp(28px, 3vw, 46px);
-  color: rgba(5, 39, 90, 0.78);
+  color: #f8f3e8;
   font-size: clamp(16px, 1.25vw, 21px);
   line-height: 1.54;
 }
 
 .table-row > div + div {
-  border-left: 1px solid rgba(5, 39, 90, 0.08);
+  border-left: 1px solid rgba(233, 200, 106, 0.18);
 }
 
 .table-row--head {
   min-height: 80px;
-  background: rgba(5, 39, 90, 0.94);
+  background: rgba(3, 27, 68, 0.46);
 }
 
 .table-row--head > div {
@@ -610,13 +609,13 @@ p {
 .table-row b {
   position: relative;
   display: inline-block;
-  color: var(--ink);
+  color: #f8f3e8;
   font-weight: 800;
 }
 
 .table-row:not(.table-row--head) > div:first-child {
-  color: var(--ink);
-  background: linear-gradient(90deg, rgba(212, 175, 55, 0.12), rgba(255, 255, 255, 0));
+  color: #f8f3e8;
+  background: linear-gradient(90deg, rgba(233, 200, 106, 0.1), rgba(255, 255, 255, 0));
 }
 
 .section-cta {
@@ -1499,12 +1498,12 @@ p {
 
   .table-row {
     padding: 18px;
-    border: 1px solid rgba(141, 104, 21, 0.16);
+    border: 1px solid rgba(233, 200, 106, 0.3);
     border-radius: 16px;
     background:
-      linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(255, 250, 240, 0.5)),
-      rgba(255, 250, 240, 0.62);
-    box-shadow: 0 14px 34px rgba(5, 39, 90, 0.08);
+      radial-gradient(circle at 92% 8%, rgba(233, 200, 106, 0.14), transparent 16rem),
+      linear-gradient(135deg, rgba(5, 39, 90, 0.98), rgba(6, 59, 122, 0.98));
+    box-shadow: 0 14px 34px rgba(5, 39, 90, 0.2);
   }
 
   .table-row > div {
@@ -1513,12 +1512,13 @@ p {
     border-left: 0;
     font-size: 16px;
     line-height: 1.42;
+    color: #f8f3e8;
   }
 
   .table-row > div + div {
     margin-top: 12px;
     padding-top: 12px;
-    border-top: 1px solid rgba(5, 39, 90, 0.07);
+    border-top: 1px solid rgba(233, 200, 106, 0.2);
     border-left: 0;
   }
 
