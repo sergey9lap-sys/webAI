@@ -1682,7 +1682,7 @@ p {
   .competence-table--statements .table-row > div {
     display: block;
     padding: 22px 20px;
-    color: var(--text);
+    color: #f8f3e8 !important;
     font-size: clamp(16px, 4.2vw, 19px);
     line-height: 1.42;
   }
