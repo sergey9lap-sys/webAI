@@ -84,6 +84,7 @@ if (!reduceMotion) {
     });
   }
 
+
   const siteLinePath = document.querySelector("[data-site-line-path]");
   if (siteLinePath) {
     const length = siteLinePath.getTotalLength();
